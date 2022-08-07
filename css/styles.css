@@ -4,6 +4,16 @@
   --btn: #2196f3;
   --primary-bg-color: #ffffff;
   --icon-color: #757575;
+
+  --transition-shadow: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-opacity: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-visibility: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transfotm-cubic: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-color: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bg: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --shadow-team-item: 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 ul {
   list-style: none;
@@ -59,7 +69,6 @@ body {
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
-  border: red solid 1px;
 }
 .section {
   padding-bottom: 94px;
@@ -152,7 +161,24 @@ body {
 .header-link:hover,
 .header-link:focus {
   color: var(--btn);
-  /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+  /* box-shadow: 0px 4px 4px 0px;
+  rgba(0, 0, 0, 0.25); */
+}
+
+.header-top {
+  position: relative;
+}
+
+.header-top::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 4px;
+  border-radius: 3px;
+  left: 0;
+  background-color: var(--btn);
+  bottom: -32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /*----------Hero-----------*/
@@ -174,6 +200,7 @@ body {
   margin-right: auto;
   width: 216px;
   height: 50px;
+  transition: var(--transfotm-cubic), var(--transition-bg);
 }
 
 .hero {
@@ -311,6 +338,7 @@ body {
   justify-content: center;
   align-items: center;
   color: #afb1b8;
+  transition: var(--transition-color), var(--transition-bg);
 }
 .past-user-icon {
   fill: currentColor;
@@ -351,6 +379,8 @@ body {
   color: #afb1b8;
   width: 170px;
   height: 92px;
+  transition: var(--transition-color), var(--transition-bg),
+    var(--transition-shadow), var(--transfotm-cubic);
 }
 .clients-link:hover,
 .clients-link:focus {
@@ -394,7 +424,7 @@ body {
 .footer-list {
   margin-top: 20px;
 }
-
+/*
 .footer-subtitle {
   font-size: 14px;
   line-height: 1.71;
@@ -402,7 +432,8 @@ body {
   color: #ffffff;
   text-decoration: none;
   font-style: normal;
-}
+  color: rgba(255, 255, 255, 0.6);
+} */
 .footer-item {
   font-size: 14px;
   line-height: 1.71;
@@ -434,6 +465,7 @@ body {
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
+  transition: var(--transition-bg);
 }
 .footer-social-icon {
   fill: #ffffff;
@@ -485,6 +517,8 @@ body {
   margin-right: auto;
   height: 38px;
   padding: 6px 22px;
+  transition: var(--transition-color), var(--transition-bg),
+    var(--transition-shadow);
 }
 .benefits-btn:hover,
 .benefits-btn:focus {
@@ -529,14 +563,15 @@ body {
   line-height: 1.55;
   padding: 72px 16px 52px 32px;
   height: 100%;
-  transform: translateY(100%);
-  transition: transform 250ms linear;
+  transition: var(--transfotm-cubic);
+  transform: translateY(101%);
   overflow: auto;
 }
 
 .benefits-item:hover,
 .benefits-item:focus {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transform: translateY(0%);
 }
 .benefits-name {
   font-weight: 700;
@@ -551,12 +586,16 @@ body {
   letter-spacing: 0.03em;
   color: #757575;
 }
+
+/*----------Modal-----------*/
+
 .overline {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: var(--transition-opacity), var(--transition-visibility);
 }
 .overline-modal {
   width: 528px;
@@ -567,22 +606,28 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 1);
+
+  box-shadow: var(--shadow-team-item);
+  transition: var(--transfotm-cubic);
 }
 .modal-btn {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 8px;
+  top: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid #2196f3;
+  border: 1px solid #757575;
 }
+
 .is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+.modal-close-icon {
+  display: flex;
 }
